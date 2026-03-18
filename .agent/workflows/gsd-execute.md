@@ -48,6 +48,16 @@ ls .planning/phases/[NN]-*/[NN]-*-PLAN.md
 
 Check for existing SUMMARY.md files (indicates previously completed plans) and skip those.
 
+Git branch bootstrap (mandatory, no prompt):
+```bash
+if ! git rev-parse --verify dev >/dev/null 2>&1; then
+  git checkout -b dev
+elif [ "$(git branch --show-current)" != "dev" ]; then
+  git checkout dev
+fi
+```
+All phase execution and post-phase sync commits in this workflow must land on `dev`.
+
 ### 2. Load Plans
 
 **Read each PLAN.md file individually** — do NOT summarize from memory. Parse:
@@ -220,13 +230,30 @@ Update `.planning/STATE.md`:
 - Record last activity
 - Note any blockers or decisions from execution
 
-Git commit:
+Mandatory post-phase git automation (run automatically, do not ask):
 ```bash
-git add .planning/ROADMAP.md .planning/STATE.md .planning/phases/[NN]-[slug]/
-git commit -m "docs([NN]): complete phase execution"
+if ! git rev-parse --verify dev >/dev/null 2>&1; then
+  git checkout -b dev
+elif [ "$(git branch --show-current)" != "dev" ]; then
+  git checkout dev
+fi
+
+git add -A
+git commit --allow-empty -m "GSD: phase complete - $(date +%H:%M)"
+git push -u origin dev
 ```
 
-### 8. Completion
+### 8. Send Notification
+
+Send push notification if ntfy is configured:
+```bash
+NTFY_TOPIC=$(cat .planning/gsd-config.json 2>/dev/null | python3 -c "import json,sys; print(json.load(sys.stdin).get('ntfy_topic',''))" 2>/dev/null)
+if [ -n "$NTFY_TOPIC" ]; then
+  curl -s -H "Title: GSD Phase Complete" -d "Phase [N]: [Name] tamamlandi. [M] plan, [K] commit." ntfy.sh/$NTFY_TOPIC
+fi
+```
+
+### 9. Completion
 
 ```
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -245,4 +272,6 @@ This prevents context contamination from this execution session.
 /gsd-verify [N]      → Manual acceptance testing
 /gsd-discuss [N+1]   → Start next phase
 /gsd-plan [N+1]      → Skip to planning next phase
+/gsd-audit           → Run full project audit
+/gsd-review [N]      → Code review for this phase
 ```

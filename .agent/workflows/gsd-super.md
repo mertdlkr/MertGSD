@@ -483,6 +483,9 @@ FOR each phase in ROADMAP:
   ├─────────────────────────────────────────────────────────────┤
   │                                                             │
   │  PRE-PHASE:                                                 │
+  │  0. Ensure `dev` branch exists and is checked out:          │
+  │     - if missing: git checkout -b dev                       │
+  │     - else: git checkout dev                                │
   │  1. Re-read ALL planning files from disk:                   │
   │     - STATE.md (current position)                           │
   │     - ROADMAP.md (phase details)                            │
@@ -512,6 +515,11 @@ FOR each phase in ROADMAP:
   │  3. Update STATE.md                                         │
   │  4. Run QUALITY GATES (see 4.5)                             │
   │  5. Generate PROGRESS REPORT (see 4.6)                      │
+  │  6. Auto-sync phase commit to dev (no prompt):              │
+  │     git add -A                                              │
+  │     git commit --allow-empty -m "GSD: phase complete -      │
+  │       $(date +%H:%M)"                                       │
+  │     git push -u origin dev                                  │
   │                                                             │
   │  CHECKPOINT:                                                │
   │  Mode A: Continue to next phase                             │

@@ -145,6 +145,14 @@ Read .agent/skills/plan-checker/SKILL.md → validate plan before executing
 Step 3: EXECUTE
 
 Read .agent/skills/executor/SKILL.md + the PLAN.md just created
+Before executing tasks, ensure `dev` branch exists and is active:
+```bash
+if ! git rev-parse --verify dev >/dev/null 2>&1; then
+  git checkout -b dev
+elif [ "$(git branch --show-current)" != "dev" ]; then
+  git checkout dev
+fi
+```
 For each wave → each task:
 a) READ all files in <files> tag (NEVER write without reading first)
 b) Verify dependencies from previous tasks exist
@@ -161,12 +169,15 @@ Run npm run build — confirm clean output
 If build output exists (e.g. out/ for Next.js), verify it's populated
 
 PASS:
-bashgit add -A && git commit -m "phase-{N}: verified ✅"
 Update .gsd/STATE.md:
 Phase {N}: {Name}
 Status: ✅ COMPLETED | Completed: {timestamp}
 Tasks: {done}/{total} | Verification: PASSED
 Update .gsd/ROADMAP.md: mark phase ✅
+Run mandatory post-phase git automation (no prompt):
+git add -A
+git commit --allow-empty -m "GSD: phase complete - $(date +%H:%M)"
+git push -u origin dev
 FAIL:
 Create fix tasks → execute (max 3 rounds) → re-verify.
 Still failing after 3 rounds → log blocker, continue to next phase if possible.

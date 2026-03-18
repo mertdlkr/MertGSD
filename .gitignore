@@ -1,16 +1,7 @@
-# --- GSD Antigravity Ignored Files ---
+# --- MertGSD Ignored Files ---
 .gsd/
-.agent/
-.agents/
 .gemini/
 .planning/
-references/
-adapters/
-docs/
-scripts/
-templates/
-agents/
-workflows/
 PROJECT_RULES.md
 GSD-STYLE.md
 model_capabilities.yaml

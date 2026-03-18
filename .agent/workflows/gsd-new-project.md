@@ -325,7 +325,36 @@ git add .planning/STATE.md
 git commit -m "docs: initialize project state"
 ```
 
-### 10. Completion
+### 10. Project Configuration
+
+Run the project configuration flow to set up notifications, deploy platform, and project-specific settings.
+
+Ask the user these questions:
+
+**1. Notifications:**
+"Push bildirim almak ister misin? Fazlar tamamlandığında, deploy olduğunda veya hata çıktığında bildirim alırsın. (ntfy.sh kullanılır)"
+
+If yes: "ntfy kanal adı ne olsun? (örn: mertpi-alerts, proje-adi-alerts)"
+Send test: `curl -s -d "GSD: ${PROJECT_NAME} projesi baslatildi!" ntfy.sh/${TOPIC}`
+
+**2. Deploy:**
+"Deploy platformu var mı?" → cloudflare-pages / vercel / netlify / none
+
+**3. Supabase:**
+"Supabase kullanılacak mı?" → If yes, ask project_ref
+
+**4. Test runner:**
+Auto-detect from package.json. Show detected commands, ask if correct.
+
+Create `.planning/gsd-config.json` with all settings.
+
+Commit:
+```bash
+git add .planning/gsd-config.json
+git commit -m "docs: project configuration"
+```
+
+### 11. Completion
 
 Display:
 ```
@@ -336,6 +365,8 @@ Display:
 Project: [Name]
 Phases: [N] phases planned
 Requirements: [M] v1 requirements
+Notifications: [enabled/disabled]
+Deploy: [platform/none]
 
 ## ▶ Next Up
 
@@ -344,4 +375,13 @@ This prevents initialization context from contaminating planning.
 
 /gsd-discuss 1    → Capture preferences for Phase 1
 /gsd-plan 1       → Skip to planning Phase 1
+/gsd-audit        → Run full project audit
+```
+
+**Send notification (if enabled):**
+```bash
+NTFY_TOPIC=$(cat .planning/gsd-config.json 2>/dev/null | grep -o '"ntfy_topic":"[^"]*"' | cut -d'"' -f4)
+if [ -n "$NTFY_TOPIC" ]; then
+  curl -s -H "Title: GSD Proje Baslatildi" -d "${PROJECT_NAME}: ${PHASE_COUNT} faz planlanadi. Hazir!" ntfy.sh/$NTFY_TOPIC
+fi
 ```
