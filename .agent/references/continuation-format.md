@@ -44,7 +44,7 @@ Standard format for presenting next steps after completing a command or workflow
 
 **02-03: Refresh Token Rotation** — Add /api/auth/refresh with sliding expiry
 
-`/mertgsd-execute-phase 2`
+`/mertgsd-execute 2`
 
 <sub>`/clear` first → fresh context window</sub>
 
@@ -69,7 +69,7 @@ Add note that this is the last plan and what comes after:
 **02-03: Refresh Token Rotation** — Add /api/auth/refresh with sliding expiry
 <sub>Final plan in Phase 2</sub>
 
-`/mertgsd-execute-phase 2`
+`/mertgsd-execute 2`
 
 <sub>`/clear` first → fresh context window</sub>
 
@@ -91,14 +91,14 @@ Add note that this is the last plan and what comes after:
 
 **Phase 2: Authentication** — JWT login flow with refresh tokens
 
-`/mertgsd-plan-phase 2`
+`/mertgsd-plan 2`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/mertgsd-discuss-phase 2` — gather context first
+- `/mertgsd-discuss 2` — gather context first
 - `/mertgsd-research-phase 2` — investigate unknowns
 - Review roadmap
 
@@ -120,14 +120,14 @@ Show completion status before next action:
 
 **Phase 3: Core Features** — User dashboard, settings, and data export
 
-`/mertgsd-plan-phase 3`
+`/mertgsd-plan 3`
 
 <sub>`/clear` first → fresh context window</sub>
 
 ---
 
 **Also available:**
-- `/mertgsd-discuss-phase 3` — gather context first
+- `/mertgsd-discuss 3` — gather context first
 - `/mertgsd-research-phase 3` — investigate unknowns
 - Review what Phase 2 built
 
@@ -145,9 +145,9 @@ When there's no clear primary action:
 
 **Phase 3: Core Features** — User dashboard, settings, and data export
 
-**To plan directly:** `/mertgsd-plan-phase 3`
+**To plan directly:** `/mertgsd-plan 3`
 
-**To discuss context first:** `/mertgsd-discuss-phase 3`
+**To discuss context first:** `/mertgsd-discuss 3`
 
 **To research unknowns:** `/mertgsd-research-phase 3`
 
@@ -214,7 +214,7 @@ Extract: `**02-03: Refresh Token Rotation** — Add /api/auth/refresh with slidi
 ## To Continue
 
 Run `/clear`, then paste:
-/mertgsd-execute-phase 2
+/mertgsd-execute 2
 ```
 
 User has no idea what 02-03 is about.
@@ -222,7 +222,7 @@ User has no idea what 02-03 is about.
 ### Don't: Missing /clear explanation
 
 ```
-`/mertgsd-plan-phase 3`
+`/mertgsd-plan 3`
 
 Run /clear first.
 ```
@@ -242,7 +242,7 @@ Sounds like an afterthought. Use "Also available:" instead.
 
 ```
 ```
-/mertgsd-plan-phase 3
+/mertgsd-plan 3
 ```
 ```
 

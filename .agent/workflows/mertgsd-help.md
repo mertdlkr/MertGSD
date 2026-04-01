@@ -27,6 +27,7 @@ Display the following help information to the user:
 | /mertgsd-new-project     | **Setup**     | Questions → Research → Requirements → Roadmap → Config     |
 | /mertgsd-discuss [N]     | **Context**   | Capture implementation decisions before planning            |
 | /mertgsd-plan [N]        | **Blueprint** | Technical planning and research for a phase                |
+| /mertgsd-list-phase-assumptions [N] | **Planning** | Preview planning assumptions for a phase |
 | /mertgsd-execute [N]     | **Builder**   | Execute all plans with atomic git commits                   |
 | /mertgsd-verify [N]      | **Audit**     | Verify built features through user acceptance testing       |
 

@@ -2,7 +2,7 @@
 
 **The open-source AI agent framework for structured project execution.** Plan, build, audit, and deploy — fully autonomous or human-in-the-loop.
 
-MertGSD is a multi-agent system that turns AI coding assistants into complete project management engines. 18 specialized agents + 44 workflows that handle everything from initial research to production deployment, brownfield mapping, milestone ops, debugging, and maintenance.
+MertGSD is a multi-agent system that turns AI coding assistants into complete project management engines. 18 specialized agents + 39 workflows that handle everything from initial research to production deployment, brownfield mapping, milestone ops, debugging, and maintenance.
 
 
 > *"I built this because every AI coding tool is great at writing code but terrible at managing projects. MertGSD bridges that gap."* — <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">Mert Ali Dalkır</a>
@@ -34,10 +34,10 @@ git clone https://github.com/mertdlkr/MertGSD.git
 ### Add to your project
 
 ```bash
-./MertGSD/mertgsd-install /path/to/your-project
+./MertGSD/mertgsd-install.sh /path/to/your-project
 ```
 
-This copies `.agent/` (18 agents + 44 workflows) into your project directory.
+This copies `.agent/` (18 agents + 39 workflows) into your project directory.
 
 ### Start building
 
@@ -83,9 +83,9 @@ When I say /mertgsd-[command], read and follow .agent/workflows/mertgsd-[command
 Available agents are in .agent/agents/
 ```
 
-### Cursor / Windsurf / Cline / Google Antigravity / VS Code (IDE Agents)
+### Cursor / Windsurf / Cline / VS Code (IDE Agents)
 
-1. Install MertGSD to your project: `./mertgsd-install .`
+1. Install MertGSD to your project: `./mertgsd-install.sh .`
 2. Open your project in the IDE
 3. Reference workflows in chat:
    - "Follow .agent/workflows/mertgsd-new-project.md to set up this project"
@@ -320,7 +320,7 @@ your-project/
 │   │   ├── mertgsd-planner.md
 │   │   ├── mertgsd-security-auditor.md
 │   │   └── ... (18 total)
-│   └── workflows/                   ← 44 workflows
+│   └── workflows/                   ← 39 workflows
 │       ├── mertgsd-new-project.md
 │       ├── mertgsd-super.md
 │       ├── mertgsd-audit.md

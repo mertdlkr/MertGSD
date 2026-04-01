@@ -276,6 +276,11 @@ Do you have API keys ready, or should I:
   c) Use a free tier / sandbox environment"
 ```
 
+**Q_ntfy: Bildirim (opsiyonel)**
+"ntfy bildirimi almak ister misiniz? Kanal adini girin veya Enter ile atlayin."
+-> Verilmisse tum fazlarda, deploy'da ve hata durumunda bildirim gonderilir.
+-> Atlanirsa sessiz calisilir.
+
 ### After Interview: Confirm and Lock
 
 ```
@@ -1226,13 +1231,19 @@ Read and follow `.agent/workflows/mertgsd-deploy.md` to deploy to production.
 
 ## Stage 8 — Send Notification
 
-If ntfy is configured in mertgsd-config.json:
+If the user provided an ntfy channel during the interview (Q_ntfy), or if ntfy is configured in mertgsd-config.json:
 ```bash
-NTFY_TOPIC=$(cat .planning/mertgsd-config.json 2>/dev/null | python3 -c "import json,sys; print(json.load(sys.stdin).get('ntfy_topic',''))" 2>/dev/null)
+# Use the channel from the interview, or fall back to config
+NTFY_TOPIC="${INTERVIEW_NTFY_CHANNEL:-$(cat .planning/mertgsd-config.json 2>/dev/null | python3 -c "import json,sys; print(json.load(sys.stdin).get('ntfy_topic',''))" 2>/dev/null)}"
 if [ -n "$NTFY_TOPIC" ]; then
   curl -s -H "Title: MertGSD Super Complete" -d "Proje tamamlandi! Tum fazlar, audit ve deploy bitti." ntfy.sh/$NTFY_TOPIC
 fi
 ```
+
+Throughout execution, if ntfy channel was provided:
+- Her faz tamamlandiginda: `curl -s -H "Title: MertGSD Super" -d "Faz [N] tamamlandi." ntfy.sh/[KANAL]`
+- Hata durumunda: `curl -s -H "Title: MertGSD HATA" -H "Priority: high" -d "[hata]" ntfy.sh/[KANAL]`
+- Kullanici kanal vermemisse bildirim gonderme.
 
 ---
 

@@ -22,7 +22,7 @@ Execute ALL remaining phases in ROADMAP.md autonomously:
 4. EMPIRICAL VERIFICATION: Terminal output as proof. "Should work" is NOT verification.
 Autopilot Rules
 
-BRANCH SAFETY: Create mertgsd-autopilot/<timestamp> branch before ANY work. Never commit to main.
+BRANCH SAFETY: Work on `dev` branch. Never commit to main.
 STATE PERSISTENCE: Update .planning/STATE.md after EVERY phase. STATE.md is your recovery checkpoint.
 FILE-FIRST CONTEXT: Re-read SPEC, ROADMAP, STATE at each phase start. Never rely on conversation memory.
 NO HALLUCINATION: Before using ANY API/library — verify it exists via npm list, grep, or docs.
@@ -107,9 +107,14 @@ READ .planning/PROJECT.md → Confirm status = FINALIZED
 READ .planning/ROADMAP.md → Get all phases and status
 READ .planning/STATE.md → Current position, decisions, blockers
 If PROJECT.md missing or not finalized → STOP. Tell user to run /mertgsd-new-project.
-0.2 Create Safe Branch
-bashBRANCH_NAME="mertgsd-autopilot/$(date +%Y%m%d-%H%M%S)"
-git checkout -b "$BRANCH_NAME"
+0.2 Ensure Dev Branch
+```bash
+if ! git rev-parse --verify dev >/dev/null 2>&1; then
+  git checkout -b dev
+elif [ "$(git branch --show-current)" != "dev" ]; then
+  git checkout dev
+fi
+```
 0.3 Determine Starting Point
 Find first phase with status ≠ ✅ COMPLETED. If argument given (e.g. 2), start there.
 0.4 Announce
@@ -216,6 +221,18 @@ If between phases: start next incomplete phase normally
 STATE.md updates are mandatory after every phase — it's your recovery checkpoint.
 Recovery should be seamless. The user should never need to explain where you left off.
 </context-recovery>
+
+### Bildirim (opsiyonel)
+
+Autopilot baslarken kullaniciya sor:
+"ntfy bildirimi almak ister misiniz? Isterseniz ntfy kanal adinizi girin (orn: mertpi-alerts), istemezseniz Enter'a basin."
+
+Eger kanal verilmisse:
+- Her faz tamamlandiginda: `curl -s -H "Title: MertGSD Autopilot" -d "Faz [N] tamamlandi." ntfy.sh/[KANAL]`
+- Tum fazlar bittiginde: `curl -s -H "Title: MertGSD Autopilot Bitti" -d "Tum fazlar tamamlandi!" ntfy.sh/[KANAL]`
+- Hata durumunda: `curl -s -H "Title: MertGSD HATA" -H "Priority: high" -d "[hata]" ntfy.sh/[KANAL]`
+
+Zorunlu degil -- kullanici bos birakirsa bildirim gonderme.
 <token-optimization>
 ## Keep Context Lean
 - Follow token management best practices — keep context lean
