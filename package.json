@@ -1,6 +1,6 @@
 {
   "name": "mertgsd",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "AI agent framework for structured project execution. 18 agents + 39 workflows. Plan, build, audit, deploy — fully autonomous or human-in-the-loop.",
   "bin": {
     "mertgsd": "./bin/mertgsd.js"

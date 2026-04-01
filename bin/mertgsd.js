@@ -24,7 +24,8 @@ const c = {
   bg: '\x1b[44m',
 };
 
-const LINE = `${c.dim}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${c.reset}`;
+const COLS = Math.min(process.stdout.columns || 70, 80);
+const LINE = `${c.dim}${'━'.repeat(COLS)}${c.reset}`;
 
 const HELP = `
 ${LINE}
