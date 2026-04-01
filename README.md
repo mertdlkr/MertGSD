@@ -30,7 +30,7 @@ MertGSD is a multi-agent system that turns AI coding assistants into complete pr
 ```bash
 npm i -g mertgsd
 cd your-project
-mertgsd init
+mertgsd install
 ```
 
 That's it. Works on **macOS, Linux, and Windows**.
@@ -87,7 +87,7 @@ Other tools (Copilot, Codex, Cursor, etc.) — just tell them to read `.agent/wo
 ### CLI Commands
 
 ```bash
-mertgsd init [path]      # Install .agent/ to a project
+mertgsd install [path]      # Install .agent/ to a project
 mertgsd update [path]    # Update to latest version
 mertgsd info             # Show agent/workflow counts
 mertgsd --version        # Show version

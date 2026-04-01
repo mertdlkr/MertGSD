@@ -33,15 +33,15 @@ ${LINE}
 ${LINE}
 
  ${c.bold}Usage:${c.reset}
-   ${c.cyan}mertgsd init${c.reset} [path]      Install .agent/ to a project
+   ${c.cyan}mertgsd install${c.reset} [path]      Install MertGSD to a project
    ${c.cyan}mertgsd update${c.reset} [path]    Update .agent/ to latest version
    ${c.cyan}mertgsd info${c.reset}             Show installed agent/workflow counts
    ${c.cyan}mertgsd --version${c.reset}        Show version
    ${c.cyan}mertgsd --help${c.reset}           Show this help
 
  ${c.bold}Examples:${c.reset}
-   ${c.dim}$${c.reset} mertgsd init             ${c.dim}# Install to current directory${c.reset}
-   ${c.dim}$${c.reset} mertgsd init ./my-app    ${c.dim}# Install to ./my-app${c.reset}
+   ${c.dim}$${c.reset} mertgsd install             ${c.dim}# Install to current directory${c.reset}
+   ${c.dim}$${c.reset} mertgsd install ./my-app    ${c.dim}# Install to ./my-app${c.reset}
    ${c.dim}$${c.reset} mertgsd update           ${c.dim}# Update current project${c.reset}
 
  ${c.bold}${c.cyan}After install — open any AI coding tool:${c.reset}
@@ -142,7 +142,7 @@ function showInfo(targetDir) {
   const agentTarget = path.join(target, '.agent');
 
   if (!fs.existsSync(agentTarget)) {
-    console.log(`${c.red}✗${c.reset} No .agent/ found here. Run: ${c.cyan}mertgsd init${c.reset}`);
+    console.log(`${c.red}✗${c.reset} No .agent/ found here. Run: ${c.cyan}mertgsd install${c.reset}`);
     process.exit(1);
   }
 
@@ -182,7 +182,7 @@ if (!cmd || cmd === '--help' || cmd === '-h') {
   console.log(HELP);
 } else if (cmd === '--version' || cmd === '-v') {
   console.log(`${c.cyan}mertgsd${c.reset} ${c.dim}v${VERSION}${c.reset}`);
-} else if (cmd === 'init' || cmd === 'install') {
+} else if (cmd === 'install' || cmd === 'install') {
   copyAgent(args[1]);
 } else if (cmd === 'update') {
   console.log(`${c.cyan}Updating MertGSD...${c.reset}`);
