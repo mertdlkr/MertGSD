@@ -10,48 +10,79 @@ const VERSION = require(path.join(PKG_DIR, 'package.json')).version;
 
 const DIRS = ['agents', 'workflows', 'templates', 'references'];
 
+// ── Colors ──
+const c = {
+  reset: '\x1b[0m',
+  bold: '\x1b[1m',
+  dim: '\x1b[2m',
+  green: '\x1b[32m',
+  cyan: '\x1b[36m',
+  yellow: '\x1b[33m',
+  magenta: '\x1b[35m',
+  white: '\x1b[37m',
+  red: '\x1b[31m',
+  bg: '\x1b[44m',
+};
+
+const LINE = `${c.dim}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${c.reset}`;
+
 const HELP = `
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
- MertGSD v${VERSION}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+${LINE}
+ ${c.bold}${c.cyan}MertGSD${c.reset} ${c.dim}v${VERSION}${c.reset}
+${LINE}
 
-Usage:
-  mertgsd init [path]      Install .agent/ to a project (default: current dir)
-  mertgsd update [path]    Update .agent/ to latest version
-  mertgsd info             Show installed agent/workflow counts
-  mertgsd --version        Show version
-  mertgsd --help           Show this help
+ ${c.bold}Usage:${c.reset}
+   ${c.cyan}mertgsd init${c.reset} [path]      Install .agent/ to a project
+   ${c.cyan}mertgsd update${c.reset} [path]    Update .agent/ to latest version
+   ${c.cyan}mertgsd info${c.reset}             Show installed agent/workflow counts
+   ${c.cyan}mertgsd --version${c.reset}        Show version
+   ${c.cyan}mertgsd --help${c.reset}           Show this help
 
-Examples:
-  mertgsd init             # Install to current directory
-  mertgsd init ./my-app    # Install to ./my-app
-  mertgsd update           # Update current project's .agent/
+ ${c.bold}Examples:${c.reset}
+   ${c.dim}$${c.reset} mertgsd init             ${c.dim}# Install to current directory${c.reset}
+   ${c.dim}$${c.reset} mertgsd init ./my-app    ${c.dim}# Install to ./my-app${c.reset}
+   ${c.dim}$${c.reset} mertgsd update           ${c.dim}# Update current project${c.reset}
 
-After install:
-  /mertgsd-new-project     # Start a new project
-  /mertgsd-help            # See all commands
-  /mertgsd-super "prompt"  # Full autonomous build
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ ${c.bold}After install — open any AI coding tool:${c.reset}
+   ${c.yellow}/mertgsd-new-project${c.reset}     ${c.dim}Plan your project (give it a master prompt)${c.reset}
+   ${c.yellow}/mertgsd-super "prompt"${c.reset}  ${c.dim}Full autonomous build${c.reset}
+   ${c.yellow}/mertgsd-autopilot${c.reset}       ${c.dim}Phase-by-phase autonomous build${c.reset}
+   ${c.yellow}/mertgsd-help${c.reset}            ${c.dim}See all 39 commands${c.reset}
+${LINE}
 `;
+
+function createGitignore(targetDir) {
+  const gitignorePath = path.join(targetDir, '.gitignore');
+  const planningIgnore = '.planning/';
+
+  if (fs.existsSync(gitignorePath)) {
+    const content = fs.readFileSync(gitignorePath, 'utf-8');
+    if (!content.includes(planningIgnore)) {
+      fs.appendFileSync(gitignorePath, `\n# MertGSD planning files (local only)\n${planningIgnore}\n`);
+    }
+  } else {
+    fs.writeFileSync(gitignorePath, `# MertGSD planning files (local only)\n${planningIgnore}\n`);
+  }
+}
 
 function copyAgent(targetDir) {
   const target = path.resolve(targetDir || '.');
   const agentTarget = path.join(target, '.agent');
 
   if (!fs.existsSync(AGENT_SRC)) {
-    console.error('❌ .agent/ not found in MertGSD package.');
+    console.error(`${c.red}✗${c.reset} .agent/ not found in MertGSD package.`);
     process.exit(1);
   }
 
   if (!fs.existsSync(target)) {
-    console.error(`❌ Target directory does not exist: ${target}`);
+    console.error(`${c.red}✗${c.reset} Target directory does not exist: ${target}`);
     process.exit(1);
   }
 
   console.log('');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log(` MertGSD v${VERSION} — Installing to: ${target}`);
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log(LINE);
+  console.log(` ${c.bold}${c.cyan}MertGSD${c.reset} ${c.dim}v${VERSION}${c.reset} ${c.dim}→${c.reset} ${c.white}${target}${c.reset}`);
+  console.log(LINE);
   console.log('');
 
   // Create .agent/ and copy subdirs (clean reinstall)
@@ -62,17 +93,15 @@ function copyAgent(targetDir) {
   for (const dir of DIRS) {
     const src = path.join(AGENT_SRC, dir);
     const dst = path.join(agentTarget, dir);
-
     if (!fs.existsSync(src)) continue;
-
-    // Remove old version of this subdir
     if (fs.existsSync(dst)) {
       fs.rmSync(dst, { recursive: true, force: true });
     }
-
-    // Copy recursively
     copyDirRecursive(src, dst);
   }
+
+  // Create/update .gitignore
+  createGitignore(target);
 
   // Count files
   let agentCount = 0;
@@ -82,19 +111,21 @@ function copyAgent(targetDir) {
     workflowCount = fs.readdirSync(path.join(agentTarget, 'workflows')).filter(f => f.endsWith('.md')).length;
   } catch {}
 
-  console.log(` ✓ Agents:    ${agentCount}`);
-  console.log(` ✓ Workflows: ${workflowCount}`);
-  console.log(` ✓ Version:   ${VERSION}`);
+  console.log(` ${c.green}✓${c.reset} Agents:    ${c.bold}${agentCount}${c.reset}`);
+  console.log(` ${c.green}✓${c.reset} Workflows: ${c.bold}${workflowCount}${c.reset}`);
+  console.log(` ${c.green}✓${c.reset} Version:   ${c.dim}${VERSION}${c.reset}`);
+  console.log(` ${c.green}✓${c.reset} .gitignore ${c.dim}(.planning/ excluded from git)${c.reset}`);
   console.log('');
-  console.log(' Next steps:');
-  console.log(`   cd ${target}`);
-  console.log('   /mertgsd-new-project    → Start a new project');
-  console.log('   /mertgsd-help           → See all commands');
-  console.log('   /mertgsd-super "prompt" → Full autonomous build');
+  console.log(` ${c.bold}Next steps:${c.reset}`);
+  console.log(`   ${c.dim}$${c.reset} cd ${c.white}${target}${c.reset}`);
   console.log('');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
-  console.log(' MertGSD installed successfully ✓');
-  console.log('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+  console.log(`   ${c.yellow}/mertgsd-new-project${c.reset}     ${c.dim}Start planning — give it your master prompt${c.reset}`);
+  console.log(`   ${c.yellow}/mertgsd-super "prompt"${c.reset}  ${c.dim}Skip planning, go full autonomous${c.reset}`);
+  console.log(`   ${c.yellow}/mertgsd-help${c.reset}            ${c.dim}See all 39 commands${c.reset}`);
+  console.log('');
+  console.log(LINE);
+  console.log(` ${c.green}${c.bold}MertGSD installed successfully ✓${c.reset}`);
+  console.log(LINE);
 }
 
 function showInfo(targetDir) {
@@ -102,7 +133,7 @@ function showInfo(targetDir) {
   const agentTarget = path.join(target, '.agent');
 
   if (!fs.existsSync(agentTarget)) {
-    console.log('❌ No .agent/ found in this directory. Run: mertgsd init');
+    console.log(`${c.red}✗${c.reset} No .agent/ found here. Run: ${c.cyan}mertgsd init${c.reset}`);
     process.exit(1);
   }
 
@@ -114,11 +145,11 @@ function showInfo(targetDir) {
     refCount = fs.readdirSync(path.join(agentTarget, 'references')).filter(f => f.endsWith('.md')).length;
   } catch {}
 
-  console.log(`MertGSD v${VERSION}`);
-  console.log(`  Agents:     ${agentCount}`);
-  console.log(`  Workflows:  ${workflowCount}`);
-  console.log(`  Templates:  ${templateCount}`);
-  console.log(`  References: ${refCount}`);
+  console.log(`${c.bold}${c.cyan}MertGSD${c.reset} ${c.dim}v${VERSION}${c.reset}`);
+  console.log(`  ${c.green}●${c.reset} Agents:     ${c.bold}${agentCount}${c.reset}`);
+  console.log(`  ${c.green}●${c.reset} Workflows:  ${c.bold}${workflowCount}${c.reset}`);
+  console.log(`  ${c.green}●${c.reset} Templates:  ${c.bold}${templateCount}${c.reset}`);
+  console.log(`  ${c.green}●${c.reset} References: ${c.bold}${refCount}${c.reset}`);
 }
 
 function copyDirRecursive(src, dst) {
@@ -134,29 +165,29 @@ function copyDirRecursive(src, dst) {
   }
 }
 
-// --- CLI ---
+// ── CLI ──
 const args = process.argv.slice(2);
 const cmd = args[0];
 
 if (!cmd || cmd === '--help' || cmd === '-h') {
   console.log(HELP);
 } else if (cmd === '--version' || cmd === '-v') {
-  console.log(`mertgsd v${VERSION}`);
+  console.log(`${c.cyan}mertgsd${c.reset} ${c.dim}v${VERSION}${c.reset}`);
 } else if (cmd === 'init' || cmd === 'install') {
   copyAgent(args[1]);
 } else if (cmd === 'update') {
-  console.log('Updating MertGSD...');
+  console.log(`${c.cyan}Updating MertGSD...${c.reset}`);
   try {
     execSync('npm update -g mertgsd', { stdio: 'inherit' });
     copyAgent(args[1]);
   } catch (e) {
-    console.log('Tip: If global update fails, try: npm i -g mertgsd@latest');
+    console.log(`${c.yellow}Tip:${c.reset} npm i -g mertgsd@latest`);
     copyAgent(args[1]);
   }
 } else if (cmd === 'info') {
   showInfo(args[1]);
 } else {
-  console.error(`Unknown command: ${cmd}`);
+  console.error(`${c.red}Unknown command:${c.reset} ${cmd}`);
   console.log(HELP);
   process.exit(1);
 }
