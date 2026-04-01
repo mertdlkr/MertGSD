@@ -3,19 +3,19 @@
 Owner direction for this roadmap:
 
 - Brand everything clearly as `MertGSD`
-- Minimize confusion between old MertGSD and MertGSD
+- Minimize confusion between old gsd-* and new mertgsd-*
 - Make the repo operational end-to-end
 - Make installation and machine-wide integrations reliable
-- Close legacy MertGSD gaps in MertGSD style, not as a raw copy
+- Close legacy gsd-* gaps in MertGSD style, not as a raw copy
 
 ## Phase 1: Brand Unification
 
-Goal: eliminate ambiguous `mertgsd-*` file naming inside the repo and move to `mertgsd-*` naming where it improves branding and reduces confusion.
+Goal: eliminate ambiguous gsd-* file naming inside the repo and move to mertgsd-* naming where it improves branding and reduces confusion.
 
 Scope:
 
-- Rename workflow files from `mertgsd-*` to `mertgsd-*`
-- Rename agent files from `mertgsd-*` to `mertgsd-*`
+- Rename workflow files from gsd-* to mertgsd-*
+- Rename agent files from gsd-* to mertgsd-*
 - Rename internal config references like `gsd-config.json` to `mertgsd-config.json`
 - Update all mentions, links, `@` references, file examples, install docs, and platform examples
 - Keep the system operational after renaming
@@ -28,7 +28,7 @@ Success criteria:
 
 ## Phase 2: Workflow Surface Completion
 
-Goal: restore missing high-value capabilities from legacy MertGSD in MertGSD's own tone and structure.
+Goal: restore missing high-value capabilities from legacy GSD in MertGSD's own tone and structure.
 
 Priority additions:
 
@@ -60,7 +60,7 @@ Scope:
 
 - Align README with actual repo surface
 - Fix command counts and agent counts
-- Remove stale `/mertgsd-` syntax where no longer valid
+- Remove stale /gsd- syntax where no longer valid
 - Remove stale tool-specific references that no longer match the current repo
 - Ensure templates and references do not mention nonexistent files or commands
 
@@ -93,7 +93,7 @@ Goal: run a repo-wide operational sanity pass after all changes.
 
 Scope:
 
-- Re-scan all files for stale `mertgsd-*` references that should now be `mertgsd-*`
+- Re-scan all files for stale gsd-* references that should now be mertgsd-*
 - Re-check installer output and referenced paths
 - Re-check README examples against actual file names
 

@@ -16,6 +16,7 @@ Display the following help information to the user:
 | Command              | Profile       | What it does                                                |
 |----------------------|---------------|-------------------------------------------------------------|
 | /mertgsd-super [prompt]  | **Autonomous** | FULL AUTONOMY: AI builds from prompt to production          |
+| /mertgsd-autopilot [N]   | **Autonomous** | Autonomous build engine (plan → execute → verify loop)      |
 | /mertgsd-no-halluc [q]   | **Verified**   | Technical Q&A with mandatory research and citations         |
 | /mertgsd-commit-memory   | **Continuity** | Distill context into long-term memory                       |
 

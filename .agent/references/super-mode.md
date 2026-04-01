@@ -2,9 +2,9 @@
 
 ## Overview
 
-Super Mode (`/mertgsd-super`) is MertGSD Antigravity's fully autonomous execution mode. This reference documents the algorithms, protocols, and safety mechanisms that make autonomous operation reliable.
+Super Mode (`/mertgsd-super`) is MertGSD's fully autonomous execution mode. This reference documents the algorithms, protocols, and safety mechanisms that make autonomous operation reliable.
 
-> **This is a 🆕 MertGSD Antigravity invention.** Not found in the original MertGSD or any other AI coding tool.
+> **This is a 🆕 MertGSD invention.** Not found in any other AI coding tool.
 
 ---
 

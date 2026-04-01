@@ -1263,7 +1263,7 @@ SUPER MODE SAFETY — THESE RULES CANNOT BE OVERRIDDEN:
 
 ```
 SUPER MODE runs long — model switches WILL happen.
-This is the MOST CRITICAL section for Antigravity.
+This is the MOST CRITICAL section for MertGSD.
 
 1. Plans must be model-proof:
    - Step-by-step instructions (not "implement X")

@@ -320,7 +320,7 @@ your-project/
 │   │   ├── mertgsd-planner.md
 │   │   ├── mertgsd-security-auditor.md
 │   │   └── ... (18 total)
-│   └── workflows/                   ← 18 workflow orchestrators
+│   └── workflows/                   ← 44 workflows
 │       ├── mertgsd-new-project.md
 │       ├── mertgsd-super.md
 │       ├── mertgsd-audit.md
