@@ -43,11 +43,15 @@ ${LINE}
    ${c.dim}$${c.reset} mertgsd init ./my-app    ${c.dim}# Install to ./my-app${c.reset}
    ${c.dim}$${c.reset} mertgsd update           ${c.dim}# Update current project${c.reset}
 
- ${c.bold}After install — open any AI coding tool:${c.reset}
-   ${c.yellow}/mertgsd-new-project${c.reset}     ${c.dim}Plan your project (give it a master prompt)${c.reset}
-   ${c.yellow}/mertgsd-super "prompt"${c.reset}  ${c.dim}Full autonomous build${c.reset}
-   ${c.yellow}/mertgsd-autopilot${c.reset}       ${c.dim}Phase-by-phase autonomous build${c.reset}
-   ${c.yellow}/mertgsd-help${c.reset}            ${c.dim}See all 39 commands${c.reset}
+ ${c.bold}${c.cyan}After install — open any AI coding tool:${c.reset}
+
+   ${c.green}1.${c.reset} ${c.yellow}/mertgsd-new-project${c.reset}     ${c.dim}Plan your project — it will ask you questions${c.reset}
+   ${c.green}2.${c.reset} ${c.yellow}/mertgsd-super${c.reset}          ${c.dim}Then build it autonomously${c.reset}
+
+   ${c.dim}Or skip planning:${c.reset}
+   ${c.dim}$${c.reset} ${c.yellow}/mertgsd-super "Build a SaaS dashboard"${c.reset}
+
+   ${c.magenta}/mertgsd-help${c.reset}            ${c.dim}See all 39 commands${c.reset}
 ${LINE}
 `;
 
@@ -81,7 +85,7 @@ function copyAgent(targetDir) {
 
   console.log('');
   console.log(LINE);
-  console.log(` ${c.bold}${c.cyan}MertGSD${c.reset} ${c.dim}v${VERSION}${c.reset} ${c.dim}→${c.reset} ${c.white}${target}${c.reset}`);
+  console.log(` ${c.bold}${c.cyan}⚡ MertGSD${c.reset} ${c.dim}v${VERSION}${c.reset} ${c.dim}→${c.reset} ${c.white}${target}${c.reset}`);
   console.log(LINE);
   console.log('');
 
@@ -116,12 +120,16 @@ function copyAgent(targetDir) {
   console.log(` ${c.green}✓${c.reset} Version:   ${c.dim}${VERSION}${c.reset}`);
   console.log(` ${c.green}✓${c.reset} .gitignore ${c.dim}(.planning/ excluded from git)${c.reset}`);
   console.log('');
-  console.log(` ${c.bold}Next steps:${c.reset}`);
+  console.log(` ${c.bold}${c.cyan}Next steps:${c.reset}`);
   console.log(`   ${c.dim}$${c.reset} cd ${c.white}${target}${c.reset}`);
   console.log('');
-  console.log(`   ${c.yellow}/mertgsd-new-project${c.reset}     ${c.dim}Start planning — give it your master prompt${c.reset}`);
-  console.log(`   ${c.yellow}/mertgsd-super "prompt"${c.reset}  ${c.dim}Skip planning, go full autonomous${c.reset}`);
-  console.log(`   ${c.yellow}/mertgsd-help${c.reset}            ${c.dim}See all 39 commands${c.reset}`);
+  console.log(`   ${c.green}1.${c.reset} ${c.yellow}/mertgsd-new-project${c.reset}   ${c.dim}Plan your project — it will ask you questions${c.reset}`);
+  console.log(`   ${c.green}2.${c.reset} ${c.yellow}/mertgsd-super${c.reset}          ${c.dim}Then run this to build it autonomously${c.reset}`);
+  console.log('');
+  console.log(`   ${c.dim}Or skip planning and go full autonomous with a prompt:${c.reset}`);
+  console.log(`   ${c.dim}$${c.reset} ${c.yellow}/mertgsd-super "Build a SaaS dashboard with auth and billing"${c.reset}`);
+  console.log('');
+  console.log(`   ${c.magenta}/mertgsd-help${c.reset}            ${c.dim}See all 39 commands${c.reset}`);
   console.log('');
   console.log(LINE);
   console.log(` ${c.green}${c.bold}MertGSD installed successfully ✓${c.reset}`);
