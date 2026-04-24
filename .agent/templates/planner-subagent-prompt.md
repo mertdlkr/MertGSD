@@ -1,6 +1,6 @@
 # Planner Subagent Prompt Template
 
-Template for spawning mertgsd-planner agent. The agent contains all planning expertise - this template provides planning context only.
+Template for spawning nexgsd-planner agent. The agent contains all planning expertise - this template provides planning context only.
 
 ---
 
@@ -34,7 +34,7 @@ Template for spawning mertgsd-planner agent. The agent contains all planning exp
 </planning_context>
 
 <downstream_consumer>
-Output consumed by /mertgsd-execute-phase
+Output consumed by /nexgsd-execute-phase
 Plans must be executable prompts with:
 - Frontmatter (wave, depends_on, files_modified, autonomous)
 - Tasks in XML format
@@ -68,20 +68,20 @@ Before returning PLANNING COMPLETE:
 
 ## Usage
 
-**From /mertgsd-plan-phase (standard mode):**
+**From /nexgsd-plan-phase (standard mode):**
 ```python
 Task(
   prompt=filled_template,
-  subagent_type="mertgsd-planner",
+  subagent_type="nexgsd-planner",
   description="Plan Phase {phase}"
 )
 ```
 
-**From /mertgsd-plan-phase --gaps (gap closure mode):**
+**From /nexgsd-plan-phase --gaps (gap closure mode):**
 ```python
 Task(
   prompt=filled_template,  # with mode: gap_closure
-  subagent_type="mertgsd-planner",
+  subagent_type="nexgsd-planner",
   description="Plan gaps for Phase {phase}"
 )
 ```
@@ -114,4 +114,4 @@ Continue: {standard | gap_closure}
 
 ---
 
-**Note:** Planning methodology, task breakdown, dependency analysis, wave assignment, TDD detection, and goal-backward derivation are baked into the mertgsd-planner agent. This template only passes context.
+**Note:** Planning methodology, task breakdown, dependency analysis, wave assignment, TDD detection, and goal-backward derivation are baked into the nexgsd-planner agent. This template only passes context.

@@ -11,7 +11,7 @@ Different AI models hallucinate differently:
 | **Gemini** | Mixes real and fabricated information; plausible-sounding synthesis |
 | **Open-source** | Higher baseline hallucination rate; less self-correction ability |
 
-**MertGSD may switch models between conversations or even mid-task.** This means anti-hallucination strategies cannot rely on model-specific behavior — they must be structural.
+**NexGsd may switch models between conversations or even mid-task.** This means anti-hallucination strategies cannot rely on model-specific behavior — they must be structural.
 
 ## Core Principles
 
@@ -32,7 +32,7 @@ RULE: When in doubt, READ THE FILE — don't recall from context.
 RULE: Never state a technical fact without a source.
 ```
 
-Source verification hierarchy for MertGSD:
+Source verification hierarchy for NexGsd:
 1. **`read_url_content`** — Fetch official documentation directly
 2. **`search_web`** — Search for current information
 3. **Existing codebase** — Check what's actually in the project files
@@ -62,8 +62,8 @@ After any checkpoint or verification step:
 RULE: Start a new conversation for each major workflow phase.
 ```
 
-The original MertGSD uses `/clear` to get a fresh context window. In MertGSD:
-- **Between phases**: Recommend "start a new conversation, then run `/mertgsd-execute 2`"
+The original NexGsd uses `/clear` to get a fresh context window. In NexGsd:
+- **Between phases**: Recommend "start a new conversation, then run `/nexgsd-execute 2`"
 - **Between plan and execute**: Each should ideally be a separate conversation
 - **If context feels stale**: Re-read STATE.md and the relevant plan files from scratch
 - **After errors**: Re-read the original plan before retrying — don't rely on your memory of it
@@ -86,7 +86,7 @@ Every workflow step should follow this pattern:
 
 ```
 1. READ the relevant planning files (don't recall from memory)
-2. EXECUTE the task using MertGSD tools
+2. EXECUTE the task using NexGsd tools
 3. VERIFY the output by reading actual files/running actual commands
 4. RECORD the result in the appropriate summary file
 5. REPORT to user if human verification is needed
@@ -94,7 +94,7 @@ Every workflow step should follow this pattern:
 
 ### Model-Specific Awareness
 
-Since MertGSD rotates models, the workflow instructions use guardrails that work structurally:
+Since NexGsd rotates models, the workflow instructions use guardrails that work structurally:
 
 | Guardrail | What It Prevents | How |
 |-----------|-----------------|-----|
@@ -105,7 +105,7 @@ Since MertGSD rotates models, the workflow instructions use guardrails that work
 | **Checkpoint gates** | Skipped human validation | Explicit stop-and-wait points |
 | **Source citations** | Fabricated technical facts | Every claim needs a verifiable source |
 
-### MertGSD-Specific Adaptations
+### NexGsd-Specific Adaptations
 
 
 1. **Don't rely on `/clear`** — Instead recommend new conversations

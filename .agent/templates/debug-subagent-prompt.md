@@ -1,6 +1,6 @@
 # Debug Subagent Prompt Template
 
-Template for spawning mertgsd-debugger agent. The agent contains all debugging expertise - this template provides problem context only.
+Template for spawning nexgsd-debugger agent. The agent contains all debugging expertise - this template provides problem context only.
 
 ---
 
@@ -51,18 +51,18 @@ Create: .planning/debug/{slug}.md
 
 ## Usage
 
-**From /mertgsd-debug:**
+**From /nexgsd-debug:**
 ```python
 Task(
   prompt=filled_template,
-  subagent_type="mertgsd-debugger",
+  subagent_type="nexgsd-debugger",
   description="Debug {slug}"
 )
 ```
 
 **From diagnose-issues (UAT):**
 ```python
-Task(prompt=template, subagent_type="mertgsd-debugger", description="Debug UAT-001")
+Task(prompt=template, subagent_type="nexgsd-debugger", description="Debug UAT-001")
 ```
 
 ---

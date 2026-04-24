@@ -74,7 +74,7 @@ This works because you're giving the model concrete examples to follow, not rely
 
 ### 2. Pattern Specification in Plans
 
-When creating plans in `/mertgsd-plan`, include a **Code Patterns** section:
+When creating plans in `/nexgsd-plan`, include a **Code Patterns** section:
 
 ```markdown
 ## Code Patterns to Follow
@@ -140,9 +140,9 @@ read file → understand patterns → apply changes matching style
 NEVER write changes "from memory" of what the file looks like.
 ```
 
-## Implementation in MertGSD Workflows
+## Implementation in NexGsd Workflows
 
-### In /mertgsd-plan (Plan Creation)
+### In /nexgsd-plan (Plan Creation)
 
 Plans must include:
 1. **Detailed action steps** — specific enough for any model
@@ -151,7 +151,7 @@ Plans must include:
 4. **Type definitions** — spell out interfaces, don't let models infer them
 5. **Verification commands** — exact commands, not "run tests"
 
-### In /mertgsd-execute (Task Execution)
+### In /nexgsd-execute (Task Execution)
 
 Before each task:
 1. Read existing code in the same area (style anchoring)
@@ -163,12 +163,12 @@ After each task:
 2. If any fail → fix immediately before committing
 3. Read the committed files once more to verify consistency
 
-### In /mertgsd-quick (Quick Tasks)
+### In /nexgsd-quick (Quick Tasks)
 
 Quick tasks skip planning depth, making them the highest risk for quality drops:
 1. ALWAYS read surrounding code before writing
 2. Run full verification suite even for small changes
-3. If the quick task is complex, suggest using `/mertgsd-plan` instead
+3. If the quick task is complex, suggest using `/nexgsd-plan` instead
 
 ## Model Switch Detection
 
@@ -184,10 +184,10 @@ If you notice quality indicators suggesting a model switch:
 
 | Strategy | What It Does | When Applied |
 |----------|-------------|-------------|
-| **Detailed Plans** | Make plans executable by any model | `/mertgsd-plan` |
-| **Style Anchoring** | Read existing code before writing new code | `/mertgsd-execute`, `/mertgsd-quick` |
-| **Pattern Specs** | Include reference files in every plan | `/mertgsd-plan` |
-| **Verification Suite** | Run lint+types+tests+build after every task | `/mertgsd-execute`, `/mertgsd-quick` |
-| **Atomic Tasks** | Small tasks = less quality risk | `/mertgsd-plan` |
-| **Code Review Gates** | Human review for complex logic | `/mertgsd-execute` |
+| **Detailed Plans** | Make plans executable by any model | `/nexgsd-plan` |
+| **Style Anchoring** | Read existing code before writing new code | `/nexgsd-execute`, `/nexgsd-quick` |
+| **Pattern Specs** | Include reference files in every plan | `/nexgsd-plan` |
+| **Verification Suite** | Run lint+types+tests+build after every task | `/nexgsd-execute`, `/nexgsd-quick` |
+| **Atomic Tasks** | Small tasks = less quality risk | `/nexgsd-plan` |
+| **Code Review Gates** | Human review for complex logic | `/nexgsd-execute` |
 | **File Re-reads** | Never modify from memory | All workflows |

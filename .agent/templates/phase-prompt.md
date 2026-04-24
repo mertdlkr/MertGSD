@@ -1,6 +1,6 @@
 # Phase Prompt Template
 
-> **Note:** Planning methodology is in `agents/mertgsd-planner.md`.
+> **Note:** Planning methodology is in `agents/nexgsd-planner.md`.
 > This template defines the PLAN.md output format that the agent produces.
 
 Template for `.planning/phases/XX-name/{phase}-{plan}-PLAN.md` - executable phase plans optimized for parallel execution.
@@ -37,7 +37,7 @@ Output: [What artifacts will be created]
 </objective>
 
 <execution_context>
-@.agent/workflows/mertgsd-execute.md
+@.agent/workflows/nexgsd-execute.md
 @.agent/templates/summary.md
 [If plan contains checkpoint tasks (type="checkpoint:*"), add:]
 @.agent/references/checkpoints.md
@@ -131,7 +131,7 @@ After completion, create `.planning/phases/XX-name/{phase}-{plan}-SUMMARY.md`
 | `user_setup` | No | Array of human-required setup items (external services) |
 | `must_haves` | Yes | Goal-backward verification criteria (see below) |
 
-**Wave is pre-computed:** Wave numbers are assigned during `/mertgsd-plan-phase`. Execute-phase reads `wave` directly from frontmatter and groups plans by wave number. No runtime dependency analysis needed.
+**Wave is pre-computed:** Wave numbers are assigned during `/nexgsd-plan-phase`. Execute-phase reads `wave` directly from frontmatter and groups plans by wave number. No runtime dependency analysis needed.
 
 **Must-haves enable verification:** The `must_haves` field carries goal-backward requirements from planning to execution. After all plans complete, execute-phase spawns a verification subagent that checks these criteria against the actual codebase.
 
@@ -370,7 +370,7 @@ Output: Working dashboard component.
 </objective>
 
 <execution_context>
-@.agent/workflows/mertgsd-execute.md
+@.agent/workflows/nexgsd-execute.md
 @.agent/templates/summary.md
 @.agent/references/checkpoints.md
 </execution_context>
@@ -558,4 +558,4 @@ Task completion ≠ Goal achievement. A task "create chat component" can complet
 5. Gaps found → fix plans created → execute → re-verify
 6. All must_haves pass → phase complete
 
-See `.agent/workflows/mertgsd-verify.md` for verification logic.
+See `.agent/workflows/nexgsd-verify.md` for verification logic.

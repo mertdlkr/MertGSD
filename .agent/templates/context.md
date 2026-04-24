@@ -7,8 +7,8 @@ Template for `.planning/phases/XX-name/{phase_num}-CONTEXT.md` - captures implem
 **Key principle:** Categories are NOT predefined. They emerge from what was actually discussed for THIS phase. A CLI phase has CLI-relevant sections, a UI phase has UI-relevant sections.
 
 **Downstream consumers:**
-- `mertgsd-phase-researcher` — Reads decisions to focus research (e.g., "card layout" → research card component patterns)
-- `mertgsd-planner` — Reads decisions to create specific tasks (e.g., "infinite scroll" → task includes virtualization)
+- `nexgsd-phase-researcher` — Reads decisions to focus research (e.g., "card layout" → research card component patterns)
+- `nexgsd-planner` — Reads decisions to create specific tasks (e.g., "infinite scroll" → task includes virtualization)
 
 ---
 
@@ -272,7 +272,7 @@ The output should answer: "What does the researcher need to investigate? What ch
 
 **After creation:**
 - File lives in phase directory: `.planning/phases/XX-name/{phase_num}-CONTEXT.md`
-- `mertgsd-phase-researcher` uses decisions to focus investigation
-- `mertgsd-planner` uses decisions + research to create executable tasks
+- `nexgsd-phase-researcher` uses decisions to focus investigation
+- `nexgsd-planner` uses decisions + research to create executable tasks
 - Downstream agents should NOT need to ask the user again about captured decisions
 </guidelines>

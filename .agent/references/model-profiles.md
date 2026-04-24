@@ -5,17 +5,17 @@
 
 | Agent | `quality` | `balanced` | `budget` |
 |-------|-----------|------------|----------|
-| mertgsd-planner | opus | opus | sonnet |
-| mertgsd-roadmapper | opus | sonnet | sonnet |
-| mertgsd-executor | opus | sonnet | sonnet |
-| mertgsd-phase-researcher | opus | sonnet | haiku |
-| mertgsd-project-researcher | opus | sonnet | haiku |
-| mertgsd-research-synthesizer | sonnet | sonnet | haiku |
-| mertgsd-debugger | opus | sonnet | sonnet |
-| mertgsd-codebase-mapper | sonnet | haiku | haiku |
-| mertgsd-verifier | sonnet | sonnet | haiku |
-| mertgsd-plan-checker | sonnet | sonnet | haiku |
-| mertgsd-integration-checker | sonnet | sonnet | haiku |
+| nexgsd-planner | opus | opus | sonnet |
+| nexgsd-roadmapper | opus | sonnet | sonnet |
+| nexgsd-executor | opus | sonnet | sonnet |
+| nexgsd-phase-researcher | opus | sonnet | haiku |
+| nexgsd-project-researcher | opus | sonnet | haiku |
+| nexgsd-research-synthesizer | sonnet | sonnet | haiku |
+| nexgsd-debugger | opus | sonnet | sonnet |
+| nexgsd-codebase-mapper | sonnet | haiku | haiku |
+| nexgsd-verifier | sonnet | sonnet | haiku |
+| nexgsd-plan-checker | sonnet | sonnet | haiku |
+| nexgsd-integration-checker | sonnet | sonnet | haiku |
 
 ## Profile Philosophy
 
@@ -54,8 +54,8 @@ Override specific agents without changing the entire profile:
 {
   "model_profile": "balanced",
   "model_overrides": {
-    "mertgsd-executor": "opus",
-    "mertgsd-planner": "haiku"
+    "nexgsd-executor": "opus",
+    "nexgsd-planner": "haiku"
   }
 }
 ```
@@ -64,7 +64,7 @@ Overrides take precedence over the profile. Valid values: `opus`, `sonnet`, `hai
 
 ## Switching Profiles
 
-Runtime: `/mertgsd-set-profile <profile>`
+Runtime: `/nexgsd-set-profile <profile>`
 
 Per-project default: Set in `.planning/config.json`:
 ```json
@@ -75,16 +75,16 @@ Per-project default: Set in `.planning/config.json`:
 
 ## Design Rationale
 
-**Why Opus for mertgsd-planner?**
+**Why Opus for nexgsd-planner?**
 Planning involves architecture decisions, goal decomposition, and task design. This is where model quality has the highest impact.
 
-**Why Sonnet for mertgsd-executor?**
+**Why Sonnet for nexgsd-executor?**
 Executors follow explicit PLAN.md instructions. The plan already contains the reasoning; execution is implementation.
 
 **Why Sonnet (not Haiku) for verifiers in balanced?**
 Verification requires goal-backward reasoning - checking if code *delivers* what the phase promised, not just pattern matching. Sonnet handles this well; Haiku may miss subtle gaps.
 
-**Why Haiku for mertgsd-codebase-mapper?**
+**Why Haiku for nexgsd-codebase-mapper?**
 Read-only exploration and pattern extraction. No reasoning required, just structured output from file contents.
 
 **Why `inherit` instead of passing `opus` directly?**

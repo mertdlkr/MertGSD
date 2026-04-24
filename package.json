@@ -1,14 +1,14 @@
 {
-  "name": "mertgsd",
-  "version": "1.3.2",
-  "description": "AI agent framework for structured project execution. 18 agents + 39 workflows. Plan, build, audit, deploy — fully autonomous or human-in-the-loop. https://github.com/mertdlkr/MertGSD",
+  "name": "nexgsd",
+  "version": "1.4.0",
+  "description": "AI agent framework for structured project execution. 18 agents + 39 workflows. Plan, build, audit, deploy — fully autonomous or human-in-the-loop. https://github.com/mertdlkr/NexGsd",
   "bin": {
-    "mertgsd": "./bin/mertgsd.js"
+    "nexgsd": "./bin/nexgsd.js"
   },
   "files": [
     "bin/",
     ".agent/",
-    "mertgsd-install.sh",
+    "nexgsd-install.sh",
     "LICENSE"
   ],
   "keywords": [
@@ -20,17 +20,17 @@
     "autonomous-coding",
     "multi-agent",
     "anti-hallucination",
-    "mertgsd"
+    "nexgsd"
   ],
   "author": "Mert Ali Dalkır <mertadalkir@gmail.com> (https://mertdlkr.com)",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mertdlkr/MertGSD.git"
+    "url": "https://github.com/mertdlkr/NexGsd.git"
   },
-  "homepage": "https://github.com/mertdlkr/MertGSD",
+  "homepage": "https://github.com/mertdlkr/NexGsd",
   "bugs": {
-    "url": "https://github.com/mertdlkr/MertGSD/issues"
+    "url": "https://github.com/mertdlkr/NexGsd/issues"
   },
   "engines": {
     "node": ">=16.0.0"

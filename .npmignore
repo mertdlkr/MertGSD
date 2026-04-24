@@ -1,6 +1,6 @@
 .git
 .gitignore
 .planning
-MERTGSD-ROADMAP.md
+NEXGSD-ROADMAP.md
 *.log
 node_modules

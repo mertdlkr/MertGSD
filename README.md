@@ -1,26 +1,26 @@
-# MertGSD
+# NexGsd
 
-[![npm version](https://img.shields.io/npm/v/mertgsd.svg)](https://www.npmjs.com/package/mertgsd)
+[![npm version](https://img.shields.io/npm/v/nexgsd.svg)](https://www.npmjs.com/package/nexgsd)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 **The open-source AI agent framework for structured project execution.** Plan, build, audit, and deploy — fully autonomous or human-in-the-loop.
 
 ```bash
-npm i -g mertgsd && mertgsd install
+npm i -g nexgsd && nexgsd install
 ```
 
-MertGSD is a multi-agent system that turns AI coding assistants into complete project management engines. **18 specialized agents + 39 workflows** that handle everything from initial research to production deployment, brownfield mapping, milestone ops, debugging, and maintenance.
+NexGsd is a multi-agent system that turns AI coding assistants into complete project management engines. **18 specialized agents + 39 workflows** that handle everything from initial research to production deployment, brownfield mapping, milestone ops, debugging, and maintenance.
 
 
-> *"I built this because every AI coding tool is great at writing code but terrible at managing projects. MertGSD bridges that gap."* — [Mert Ali Dalkır](https://mertdlkr.com)
+> *"I built this because every AI coding tool is great at writing code but terrible at managing projects. NexGsd bridges that gap."* — [Mert Ali Dalkır](https://mertdlkr.com)
 
 ---
 
-## Why MertGSD?
+## Why NexGsd?
 
 **The problem:** AI coding assistants write code fast but lose context between sessions, hallucinate project state, skip testing, forget to audit security, and can't manage multi-phase projects.
 
-**The solution:** MertGSD adds a structured execution layer on top of any AI coding tool:
+**The solution:** NexGsd adds a structured execution layer on top of any AI coding tool:
 
 - **Context management** — `.planning/` directory persists project state across sessions
 - **Anti-hallucination** — every claim verified against real files and real command output
@@ -35,9 +35,9 @@ MertGSD is a multi-agent system that turns AI coding assistants into complete pr
 ### Option A: npm (recommended)
 
 ```bash
-npm i -g mertgsd
+npm i -g nexgsd
 cd your-project
-mertgsd install
+nexgsd install
 ```
 
 That's it. Works on **macOS, Linux, and Windows**.
@@ -45,13 +45,13 @@ That's it. Works on **macOS, Linux, and Windows**.
 **One-time use without global install:**
 ```bash
 cd your-project
-npx mertgsd install
+npx nexgsd install
 ```
 
 **Update later:**
 ```bash
-npm update -g mertgsd
-mertgsd update
+npm update -g nexgsd
+nexgsd update
 ```
 
 ### Option B: Git clone (manual)
@@ -60,21 +60,21 @@ mertgsd update
 <summary>Click to expand</summary>
 
 ```bash
-git clone https://github.com/mertdlkr/MertGSD.git
+git clone https://github.com/mertdlkr/NexGsd.git
 ```
 
 **macOS / Linux / WSL:**
 ```bash
-bash MertGSD/mertgsd-install.sh /path/to/your-project
+bash NexGsd/nexgsd-install.sh /path/to/your-project
 ```
 
 **Windows (PowerShell):**
 ```powershell
 # Use Git Bash
-bash MertGSD/mertgsd-install.sh C:/Users/you/your-project
+bash NexGsd/nexgsd-install.sh C:/Users/you/your-project
 
 # Or manual copy
-Copy-Item -Recurse MertGSD/.agent your-project/.agent
+Copy-Item -Recurse NexGsd/.agent your-project/.agent
 ```
 
 </details>
@@ -84,36 +84,36 @@ Copy-Item -Recurse MertGSD/.agent your-project/.agent
 
 **Step 1 — Plan your project:**
 ```
-/mertgsd-new-project
+/nexgsd-new-project
 ```
 It will ask you questions about what you want to build, research the domain, and create a structured project plan. No code is written at this stage.
 
 **Step 2 — Build it autonomously:**
 ```
-/mertgsd-super
+/nexgsd-super
 ```
 After planning, run this to execute the entire project autonomously — plan, build, test, audit, and deploy. Walk away and get notified when it's done.
 
 **Or skip planning and go full autonomous with a prompt:**
 ```
-/mertgsd-super "Build a SaaS dashboard with auth, billing, and analytics"
+/nexgsd-super "Build a SaaS dashboard with auth, billing, and analytics"
 ```
 
 **See all 39 commands:**
 ```
-/mertgsd-help
+/nexgsd-help
 ```
 
-> **Works with any AI coding tool.** For non-slash-command tools, just tell them: "Read `.agent/workflows/mertgsd-new-project.md` and follow the workflow."
+> **Works with any AI coding tool.** For non-slash-command tools, just tell them: "Read `.agent/workflows/nexgsd-new-project.md` and follow the workflow."
 
 ### CLI Commands
 
 ```bash
-mertgsd install [path]   # Install MertGSD to a project
-mertgsd update [path]    # Update to latest version
-mertgsd info             # Show agent/workflow counts
-mertgsd --version        # Show version
-mertgsd --help           # Show help
+nexgsd install [path]   # Install NexGsd to a project
+nexgsd update [path]    # Update to latest version
+nexgsd info             # Show agent/workflow counts
+nexgsd --version        # Show version
+nexgsd --help           # Show help
 ```
 
 ---
@@ -124,11 +124,11 @@ mertgsd --help           # Show help
 
 ```bash
 cd your-project
-/mertgsd-new-project          # Initialize project
-/mertgsd-plan 1               # Plan phase 1
-/mertgsd-execute 1            # Execute with atomic commits
-/mertgsd-audit                # Full quality audit
-/mertgsd-deploy               # Deploy to production
+/nexgsd-new-project          # Initialize project
+/nexgsd-plan 1               # Plan phase 1
+/nexgsd-execute 1            # Execute with atomic commits
+/nexgsd-audit                # Full quality audit
+/nexgsd-deploy               # Deploy to production
 ```
 
 ### GitHub Copilot CLI / OpenAI Codex CLI
@@ -137,87 +137,87 @@ The `.agent/` directory works as context files. Point the CLI to read them:
 
 ```bash
 # Copilot CLI
-copilot "Read .agent/workflows/mertgsd-new-project.md and follow the workflow to initialize this project"
+copilot "Read .agent/workflows/nexgsd-new-project.md and follow the workflow to initialize this project"
 
 # Codex CLI
-codex "Follow the workflow in .agent/workflows/mertgsd-super.md to build: [your prompt]"
+codex "Follow the workflow in .agent/workflows/nexgsd-super.md to build: [your prompt]"
 ```
 
-Add a `.github/copilot-instructions.md` referencing MertGSD:
+Add a `.github/copilot-instructions.md` referencing NexGsd:
 ```markdown
-When I say /mertgsd-[command], read and follow .agent/workflows/mertgsd-[command].md
+When I say /nexgsd-[command], read and follow .agent/workflows/nexgsd-[command].md
 Available agents are in .agent/agents/
 ```
 
 ### Cursor / Windsurf / Cline / VS Code (IDE Agents)
 
-1. Install MertGSD to your project: `./mertgsd-install.sh .`
+1. Install NexGsd to your project: `./nexgsd-install.sh .`
 2. Open your project in the IDE
 3. Reference workflows in chat:
-   - "Follow .agent/workflows/mertgsd-new-project.md to set up this project"
-   - "Use the mertgsd-security-auditor agent to scan for vulnerabilities"
+   - "Follow .agent/workflows/nexgsd-new-project.md to set up this project"
+   - "Use the nexgsd-security-auditor agent to scan for vulnerabilities"
 4. The IDE agent reads the `.agent/` files as context and follows the structured workflows
 
 ### Any LLM / Custom Setup
 
-MertGSD agents and workflows are plain Markdown files. Any LLM that can read files and execute commands can use them:
+NexGsd agents and workflows are plain Markdown files. Any LLM that can read files and execute commands can use them:
 
 ```
 System prompt: "You have access to a project management framework in .agent/.
-Read .agent/workflows/mertgsd-help.md for available commands. When the user requests
+Read .agent/workflows/nexgsd-help.md for available commands. When the user requests
 a workflow, read and follow the corresponding .md file step by step."
 ```
 
 ---
 
-## Default Workflow (The MertGSD Loop)
+## Default Workflow (The NexGsd Loop)
 
 This is how most projects flow from idea to production:
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    THE MERTGSD LOOP                           │
+│                    THE NEXGSD LOOP                           │
 │                                                              │
 │  ┌──────────────┐                                           │
-│  │ /mertgsd-new-project │  ← You describe what to build         │
+│  │ /nexgsd-new-project │  ← You describe what to build         │
 │  └──────┬───────┘                                           │
 │         │  Creates: PROJECT.md, REQUIREMENTS.md,            │
-│         │  ROADMAP.md, STATE.md, mertgsd-config.json            │
+│         │  ROADMAP.md, STATE.md, nexgsd-config.json            │
 │         ▼                                                    │
 │  ┌──────────────┐                                           │
-│  │ /mertgsd-plan N  │  ← Research + create task plans           │
+│  │ /nexgsd-plan N  │  ← Research + create task plans           │
 │  └──────┬───────┘                                           │
 │         │  Creates: RESEARCH.md, PLAN.md files              │
 │         ▼                                                    │
 │  ┌──────────────┐                                           │
-│  │ /mertgsd-execute N│  ← Build with atomic commits             │
+│  │ /nexgsd-execute N│  ← Build with atomic commits             │
 │  └──────┬───────┘                                           │
 │         │  Creates: SUMMARY.md, VERIFICATION.md             │
 │         │  Sends: push notification ✓                       │
 │         ▼                                                    │
 │  ┌──────────────┐                                           │
-│  │ /mertgsd-verify N│  ← User acceptance testing                │
+│  │ /nexgsd-verify N│  ← User acceptance testing                │
 │  └──────┬───────┘                                           │
 │         │                                                    │
-│         ├── Pass? → Next phase (repeat from /mertgsd-plan N+1)  │
-│         └── Gaps? → /mertgsd-plan N --gaps (fix and re-execute) │
+│         ├── Pass? → Next phase (repeat from /nexgsd-plan N+1)  │
+│         └── Gaps? → /nexgsd-plan N --gaps (fix and re-execute) │
 │                                                              │
 │  After all phases:                                           │
 │  ┌──────────────┐                                           │
-│  │ /mertgsd-audit   │  ← Security, performance, mobile, SEO,   │
+│  │ /nexgsd-audit   │  ← Security, performance, mobile, SEO,   │
 │  └──────┬───────┘    accessibility, brand review             │
 │         ▼                                                    │
 │  ┌──────────────┐                                           │
-│  │ /mertgsd-deploy  │  ← Build, deploy, verify live URL         │
+│  │ /nexgsd-deploy  │  ← Build, deploy, verify live URL         │
 │  └──────────────┘                                           │
 │                                                              │
-│  SHORTCUT: /mertgsd-super does ALL of this autonomously         │
+│  SHORTCUT: /nexgsd-super does ALL of this autonomously         │
 └─────────────────────────────────────────────────────────────┘
 ```
 
 **For quick tasks** that don't need full project setup:
 ```
-/mertgsd-quick "Add dark mode toggle to the navbar"
+/nexgsd-quick "Add dark mode toggle to the navbar"
 ```
 
 ---
@@ -228,73 +228,73 @@ This is how most projects flow from idea to production:
 
 | Command | What it does |
 |---------|-------------|
-| `/mertgsd-super [prompt]` | Full autonomy — prompt to production, zero human input |
-| `/mertgsd-new-project` | Interactive setup: questions → research → requirements → roadmap → config |
-| `/mertgsd-no-halluc [question]` | Verified Q&A with mandatory external research and citations |
+| `/nexgsd-super [prompt]` | Full autonomy — prompt to production, zero human input |
+| `/nexgsd-new-project` | Interactive setup: questions → research → requirements → roadmap → config |
+| `/nexgsd-no-halluc [question]` | Verified Q&A with mandatory external research and citations |
 
 ### Build Cycle
 
 | Command | What it does |
 |---------|-------------|
-| `/mertgsd-discuss [phase]` | Capture implementation decisions before planning |
-| `/mertgsd-plan [phase]` | Research and create executable task plans |
-| `/mertgsd-execute [phase]` | Execute plans with atomic git commits |
-| `/mertgsd-verify [phase]` | User acceptance testing against phase goals |
+| `/nexgsd-discuss [phase]` | Capture implementation decisions before planning |
+| `/nexgsd-plan [phase]` | Research and create executable task plans |
+| `/nexgsd-execute [phase]` | Execute plans with atomic git commits |
+| `/nexgsd-verify [phase]` | User acceptance testing against phase goals |
 
 ### Quality & Review
 
 | Command | What it does |
 |---------|-------------|
-| `/mertgsd-audit` | Full project audit — 6 agents in parallel |
-| `/mertgsd-review [phase]` | PR-style code review with multi-agent analysis |
-| `/mertgsd-refactor [desc]` | Safe refactoring with test snapshots + auto-rollback |
+| `/nexgsd-audit` | Full project audit — 6 agents in parallel |
+| `/nexgsd-review [phase]` | PR-style code review with multi-agent analysis |
+| `/nexgsd-refactor [desc]` | Safe refactoring with test snapshots + auto-rollback |
 
 ### Operations
 
 | Command | What it does |
 |---------|-------------|
-| `/mertgsd-deploy` | Build → deploy → verify (CF Pages / Vercel / Netlify) |
-| `/mertgsd-migrate [desc]` | DB migration with safety gates + rollback SQL |
-| `/mertgsd-setup-config` | Configure ntfy, deploy platform, Supabase, tests |
+| `/nexgsd-deploy` | Build → deploy → verify (CF Pages / Vercel / Netlify) |
+| `/nexgsd-migrate [desc]` | DB migration with safety gates + rollback SQL |
+| `/nexgsd-setup-config` | Configure ntfy, deploy platform, Supabase, tests |
 
 ### Utilities
 
 | Command | What it does |
 |---------|-------------|
-| `/mertgsd-quick [desc]` | Small ad-hoc task with MertGSD guarantees |
-| `/mertgsd-progress` | Current state, blockers, next steps |
-| `/mertgsd-commit-memory` | Distill context into long-term memory |
-| `/mertgsd-help` | Show all commands |
+| `/nexgsd-quick [desc]` | Small ad-hoc task with NexGsd guarantees |
+| `/nexgsd-progress` | Current state, blockers, next steps |
+| `/nexgsd-commit-memory` | Distill context into long-term memory |
+| `/nexgsd-help` | Show all commands |
 
 ### Brownfield & Milestones
 
 | Command | What it does |
 |---------|-------------|
-| `/mertgsd-map-codebase` | Build a real codebase map before planning existing projects |
-| `/mertgsd-new-milestone` | Start the next milestone on an existing project |
-| `/mertgsd-audit-milestone` | Verify milestone-wide requirement coverage and integration |
-| `/mertgsd-complete-milestone` | Archive a shipped milestone and prepare the next cycle |
-| `/mertgsd-plan-milestone-gaps` | Turn milestone audit gaps into roadmap work |
+| `/nexgsd-map-codebase` | Build a real codebase map before planning existing projects |
+| `/nexgsd-new-milestone` | Start the next milestone on an existing project |
+| `/nexgsd-audit-milestone` | Verify milestone-wide requirement coverage and integration |
+| `/nexgsd-complete-milestone` | Archive a shipped milestone and prepare the next cycle |
+| `/nexgsd-plan-milestone-gaps` | Turn milestone audit gaps into roadmap work |
 
 ### Continuity & Maintenance
 
 | Command | What it does |
 |---------|-------------|
-| `/mertgsd-debug [issue]` | Start or resume a structured debug session |
-| `/mertgsd-pause-work` | Save a precise handoff for the next session |
-| `/mertgsd-resume-work` | Restore project context and route to the next step |
-| `/mertgsd-add-todo` | Capture follow-up work without losing context |
-| `/mertgsd-check-todos` | Review pending todos and route them into action |
-| `/mertgsd-health` | Validate `.planning/` integrity and repair safe issues |
-| `/mertgsd-update` | Update a MertGSD clone or explain reinstall path |
-| `/mertgsd-settings` | Inspect or update MertGSD project settings |
-| `/mertgsd-set-profile` | Set the preferred model profile |
-| `/mertgsd-research-phase` | Run standalone phase research before planning |
-| `/mertgsd-add-phase` | Append a new roadmap phase |
-| `/mertgsd-insert-phase` | Insert an urgent decimal phase |
-| `/mertgsd-remove-phase` | Remove an unstarted future phase |
-| `/mertgsd-add-tests` | Add or strengthen tests for an area or phase |
-| `/mertgsd-reapply-patches` | Reapply locally saved patch overlays after updates |
+| `/nexgsd-debug [issue]` | Start or resume a structured debug session |
+| `/nexgsd-pause-work` | Save a precise handoff for the next session |
+| `/nexgsd-resume-work` | Restore project context and route to the next step |
+| `/nexgsd-add-todo` | Capture follow-up work without losing context |
+| `/nexgsd-check-todos` | Review pending todos and route them into action |
+| `/nexgsd-health` | Validate `.planning/` integrity and repair safe issues |
+| `/nexgsd-update` | Update a NexGsd clone or explain reinstall path |
+| `/nexgsd-settings` | Inspect or update NexGsd project settings |
+| `/nexgsd-set-profile` | Set the preferred model profile |
+| `/nexgsd-research-phase` | Run standalone phase research before planning |
+| `/nexgsd-add-phase` | Append a new roadmap phase |
+| `/nexgsd-insert-phase` | Insert an urgent decimal phase |
+| `/nexgsd-remove-phase` | Remove an unstarted future phase |
+| `/nexgsd-add-tests` | Add or strengthen tests for an area or phase |
+| `/nexgsd-reapply-patches` | Reapply locally saved patch overlays after updates |
 
 ---
 
@@ -304,45 +304,45 @@ This is how most projects flow from idea to production:
 
 | Agent | What it does |
 |-------|-------------|
-| `mertgsd-executor` | Executes plans with atomic commits, deviation handling, checkpoints |
-| `mertgsd-planner` | Creates task plans with dependency analysis and wave ordering |
-| `mertgsd-roadmapper` | Creates phased project roadmaps from requirements |
-| `mertgsd-phase-researcher` | Researches implementation approach before planning |
-| `mertgsd-project-researcher` | Researches domain, stack, ecosystem before roadmap |
-| `mertgsd-research-synthesizer` | Merges parallel research outputs into actionable summaries |
+| `nexgsd-executor` | Executes plans with atomic commits, deviation handling, checkpoints |
+| `nexgsd-planner` | Creates task plans with dependency analysis and wave ordering |
+| `nexgsd-roadmapper` | Creates phased project roadmaps from requirements |
+| `nexgsd-phase-researcher` | Researches implementation approach before planning |
+| `nexgsd-project-researcher` | Researches domain, stack, ecosystem before roadmap |
+| `nexgsd-research-synthesizer` | Merges parallel research outputs into actionable summaries |
 
 ### Verification
 
 | Agent | What it does |
 |-------|-------------|
-| `mertgsd-verifier` | Goal-backward verification — did the code deliver what was promised? |
-| `mertgsd-plan-checker` | Pre-execution plan quality check |
-| `mertgsd-integration-checker` | Cross-phase integration and E2E flow verification |
-| `mertgsd-debugger` | Scientific method bug investigation with hypothesis testing |
-| `mertgsd-codebase-mapper` | Explores and documents codebase structure |
+| `nexgsd-verifier` | Goal-backward verification — did the code deliver what was promised? |
+| `nexgsd-plan-checker` | Pre-execution plan quality check |
+| `nexgsd-integration-checker` | Cross-phase integration and E2E flow verification |
+| `nexgsd-debugger` | Scientific method bug investigation with hypothesis testing |
+| `nexgsd-codebase-mapper` | Explores and documents codebase structure |
 
 ### Quality Auditors
 
 | Agent | What it does |
 |-------|-------------|
-| `mertgsd-security-auditor` | OWASP top 10, dependency audit, secrets detection, CSP |
-| `mertgsd-performance-tester` | Lighthouse, bundle size, lazy loading, render performance |
-| `mertgsd-mobile-auditor` | Responsive design, touch targets, viewport, overflow |
-| `mertgsd-seo-checker` | Metadata, sitemap, structured data, hreflang, headings |
-| `mertgsd-accessibility-tester` | WCAG 2.2 AA, ARIA, keyboard nav, contrast, focus |
-| `mertgsd-brand-reviewer` | Brand consistency, copy quality, design system, typography |
+| `nexgsd-security-auditor` | OWASP top 10, dependency audit, secrets detection, CSP |
+| `nexgsd-performance-tester` | Lighthouse, bundle size, lazy loading, render performance |
+| `nexgsd-mobile-auditor` | Responsive design, touch targets, viewport, overflow |
+| `nexgsd-seo-checker` | Metadata, sitemap, structured data, hreflang, headings |
+| `nexgsd-accessibility-tester` | WCAG 2.2 AA, ARIA, keyboard nav, contrast, focus |
+| `nexgsd-brand-reviewer` | Brand consistency, copy quality, design system, typography |
 
 ### Infrastructure
 
 | Agent | What it does |
 |-------|-------------|
-| `mertgsd-notifier` | Push notifications via ntfy.sh at milestones |
+| `nexgsd-notifier` | Push notifications via ntfy.sh at milestones |
 
 ---
 
 ## Anti-Hallucination System
 
-The #1 problem with AI coding: it says it did something but didn't actually do it. MertGSD has 8 structural safeguards:
+The #1 problem with AI coding: it says it did something but didn't actually do it. NexGsd has 8 structural safeguards:
 
 | Protection | How |
 |------------|-----|
@@ -359,7 +359,7 @@ The #1 problem with AI coding: it says it did something but didn't actually do i
 
 ## Push Notifications
 
-Configure during `/mertgsd-new-project` or `/mertgsd-setup-config`:
+Configure during `/nexgsd-new-project` or `/nexgsd-setup-config`:
 
 ```
 "Want push notifications?" → yes
@@ -380,24 +380,24 @@ Uses <a href="https://ntfy.sh" target="_blank" rel="noreferrer">ntfy.sh</a> — 
 
 ```
 your-project/
-├── .agent/                          ← MertGSD system (copied by install)
+├── .agent/                          ← NexGsd system (copied by install)
 │   ├── agents/                      ← 18 specialized agents
-│   │   ├── mertgsd-executor.md
-│   │   ├── mertgsd-planner.md
-│   │   ├── mertgsd-security-auditor.md
+│   │   ├── nexgsd-executor.md
+│   │   ├── nexgsd-planner.md
+│   │   ├── nexgsd-security-auditor.md
 │   │   └── ... (18 total)
 │   └── workflows/                   ← 39 workflows
-│       ├── mertgsd-new-project.md
-│       ├── mertgsd-super.md
-│       ├── mertgsd-audit.md
+│       ├── nexgsd-new-project.md
+│       ├── nexgsd-super.md
+│       ├── nexgsd-audit.md
 │       └── ... (39 total)
 │
-└── .planning/                       ← Project state (created by mertgsd-new-project)
+└── .planning/                       ← Project state (created by nexgsd-new-project)
     ├── PROJECT.md                   ← Vision and context
     ├── REQUIREMENTS.md              ← v1/v2 requirements
     ├── ROADMAP.md                   ← Phases and progress
     ├── STATE.md                     ← Current position (living memory)
-    ├── mertgsd-config.json              ← Settings (ntfy, deploy, tests)
+    ├── nexgsd-config.json              ← Settings (ntfy, deploy, tests)
     ├── research/                    ← Domain research
     └── phases/
         └── 01-phase-name/
@@ -441,7 +441,7 @@ Every agent and workflow exists because it was needed during real development. R
 
 ## Model Compatibility
 
-MertGSD works with any LLM:
+NexGsd works with any LLM:
 
 | Model | Status |
 |-------|--------|
@@ -463,7 +463,7 @@ PRs welcome. If you add a new agent or workflow, follow the existing format in `
 
 **<a href="https://mertdlkr.com" target="_blank" rel="noreferrer">Mert Ali Dalkır</a>** — AI-first builder, co-founder of <a href="https://nexvar.io" target="_blank" rel="noreferrer">NexVar</a>.
 
-I build tools and systems that make AI-powered development faster, more reliable, and more structured. MertGSD is the execution framework behind everything I ship.
+I build tools and systems that make AI-powered development faster, more reliable, and more structured. NexGsd is the execution framework behind everything I ship.
 
 <a href="https://mertdlkr.com" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/mertdlkr.com-000?style=flat&amp;logo=safari&amp;logoColor=white" alt="Website"></a>
 <a href="https://x.com/mertdlkr" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/@mertdlkr-000?style=flat&amp;logo=x&amp;logoColor=white" alt="X"></a>
@@ -482,7 +482,7 @@ MIT
 
 ---
 
-**If MertGSD saves you time, give it a star.** It helps others find it.
+**If NexGsd saves you time, give it a star.** It helps others find it.
 
 Built with conviction at <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">mertdlkr.com</a>.
 
@@ -493,9 +493,9 @@ ai code review, ai security audit, anti-hallucination, context management,
 phased execution, atomic commits, ai deployment automation, cursor agents,
 copilot custom agents, codex agents, windsurf agents, cline agents, antigravity agents,
 ai software development, prompt to production, ai-powered development,
-mertgsd, gsd, get shit done, ai coding assistant, ai project execution,
+nexgsd, nexgsd, get shit done, ai coding assistant, ai project execution,
 autonomous build, ai audit, ai deploy, ai testing, ai qa, ai devops,
 project scaffolding, ai planning, ai requirements, ai roadmap,
-npm ai framework, npx mertgsd, mertgsd install, mertgsd super,
+npm ai framework, npx nexgsd, nexgsd install, nexgsd super,
 vibe coding, ai first development, structured execution
 -->
