@@ -2,8 +2,11 @@
 
 [![npm version](https://img.shields.io/npm/v/nexgsd.svg)](https://www.npmjs.com/package/nexgsd)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Built by NexVar](https://img.shields.io/badge/built%20by-NexVar-0a0a0a?labelColor=000)](https://nexvar.io)
 
 **The open-source AI agent framework for structured project execution.** Plan, build, audit, and deploy — fully autonomous or human-in-the-loop.
+
+> Built at **[NexVar](https://nexvar.io)** by **[Mert Ali Dalkır](https://mertdlkr.com)** — the execution framework behind our production work.
 
 ```bash
 npm i -g nexgsd && nexgsd install
@@ -60,7 +63,7 @@ nexgsd update
 <summary>Click to expand</summary>
 
 ```bash
-git clone https://github.com/mertdlkr/NexGsd.git
+git clone https://github.com/NexVar/NexGsd.git
 ```
 
 **macOS / Linux / WSL:**
@@ -459,11 +462,18 @@ PRs welcome. If you add a new agent or workflow, follow the existing format in `
 
 ---
 
-## Author
+## Built By
 
-**<a href="https://mertdlkr.com" target="_blank" rel="noreferrer">Mert Ali Dalkır</a>** — AI-first builder, co-founder of <a href="https://nexvar.io" target="_blank" rel="noreferrer">NexVar</a>.
+### <a href="https://nexvar.io" target="_blank" rel="noreferrer">NexVar</a>
 
-I build tools and systems that make AI-powered development faster, more reliable, and more structured. NexGsd is the execution framework behind everything I ship.
+AI-first software studio shipping production tooling, AI platforms, and developer infrastructure. NexGsd is the execution framework we use internally on every project we ship.
+
+<a href="https://nexvar.io" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/nexvar.io-000?style=flat&amp;logo=safari&amp;logoColor=white" alt="Website"></a>
+<a href="https://github.com/NexVar" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/NexVar-181717?style=flat&amp;logo=github&amp;logoColor=white" alt="GitHub"></a>
+
+### <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">Mert Ali Dalkır</a>
+
+Creator and maintainer. Co-founder of NexVar. AI-first builder making AI-powered development faster, more reliable, and more structured.
 
 <a href="https://mertdlkr.com" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/mertdlkr.com-000?style=flat&amp;logo=safari&amp;logoColor=white" alt="Website"></a>
 <a href="https://x.com/mertdlkr" target="_blank" rel="noreferrer"><img src="https://img.shields.io/badge/@mertdlkr-000?style=flat&amp;logo=x&amp;logoColor=white" alt="X"></a>
@@ -478,13 +488,13 @@ I build tools and systems that make AI-powered development faster, more reliable
 
 ## License
 
-MIT
+MIT © <a href="https://nexvar.io" target="_blank" rel="noreferrer">NexVar</a> and <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">Mert Ali Dalkır</a>
 
 ---
 
 **If NexGsd saves you time, give it a star.** It helps others find it.
 
-Built with conviction at <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">mertdlkr.com</a>.
+Built with conviction at <a href="https://nexvar.io" target="_blank" rel="noreferrer">nexvar.io</a> and <a href="https://mertdlkr.com" target="_blank" rel="noreferrer">mertdlkr.com</a>.
 
 <!--
 Keywords for discoverability (LLM indexing, GitHub search, npm search):

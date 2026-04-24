@@ -1,7 +1,7 @@
 {
   "name": "nexgsd",
-  "version": "1.4.0",
-  "description": "AI agent framework for structured project execution. 18 agents + 39 workflows. Plan, build, audit, deploy — fully autonomous or human-in-the-loop. https://github.com/mertdlkr/NexGsd",
+  "version": "1.4.1",
+  "description": "AI agent framework for structured project execution. 18 agents + 39 workflows. Plan, build, audit, deploy — fully autonomous or human-in-the-loop. Built by NexVar. https://github.com/NexVar/NexGsd",
   "bin": {
     "nexgsd": "./bin/nexgsd.js"
   },
@@ -20,17 +20,21 @@
     "autonomous-coding",
     "multi-agent",
     "anti-hallucination",
-    "nexgsd"
+    "nexgsd",
+    "nexvar"
   ],
-  "author": "Mert Ali Dalkır <mertadalkir@gmail.com> (https://mertdlkr.com)",
+  "author": "NexVar (https://nexvar.io)",
+  "contributors": [
+    "Mert Ali Dalkır <mertadalkir@gmail.com> (https://mertdlkr.com)"
+  ],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mertdlkr/NexGsd.git"
+    "url": "https://github.com/NexVar/NexGsd.git"
   },
-  "homepage": "https://github.com/mertdlkr/NexGsd",
+  "homepage": "https://github.com/NexVar/NexGsd",
   "bugs": {
-    "url": "https://github.com/mertdlkr/NexGsd/issues"
+    "url": "https://github.com/NexVar/NexGsd/issues"
   },
   "engines": {
     "node": ">=16.0.0"
